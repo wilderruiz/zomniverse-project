@@ -10,6 +10,8 @@ This repository is the **public project window** for Zomniverse. The main source
 > **Source code:** Private  
 > **Public release model:** Progressive, publication-led disclosure
 
+**Technical overview:** [Languages, packages, scientific stack and AI models](docs/TECHNOLOGY.md)
+
 ---
 
 ## What Zomniverse is for
@@ -107,6 +109,7 @@ A component becoming scientifically described here does **not** automatically me
 
 ### Planned for this public repository
 
+- [x] Public technology overview
 - [ ] Research overview
 - [ ] Public development milestones
 - [ ] Publication index
