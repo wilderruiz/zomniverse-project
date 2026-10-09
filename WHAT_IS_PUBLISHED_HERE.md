@@ -24,7 +24,8 @@ Use this repository for material that is appropriate to expose publicly about Zo
 - reproducibility packages that are approved for release;
 - public datasets or example data when licensing and research governance permit;
 - selected source components only when there is an explicit decision to release them;
-- documentation explaining publicly released Zomniverse capabilities.
+- documentation explaining publicly released Zomniverse capabilities;
+- **reviewed public engineering logs** that explain architecture, tooling, workflow design or selected public code without exposing private Zomniverse implementation.
 
 This repository is a curated public record of the project rather than a copy of the private product repository.
 
@@ -43,6 +44,10 @@ WHAT_IS_PUBLISHED_HERE.md
 
 docs/TECHNOLOGY.md
   Public overview of languages, packages, scientific stack and AI models.
+
+docs/engineering/2026-10-09_REVIEW_FIRST_PUBLICATION_WORKSPACE_LOG.md
+  Public engineering log describing the review-first publication-workspace redesign,
+  including selected code from the public ZomniverseGitPet tool.
 ```
 
 Agents should inspect the repository itself before assuming this list is exhaustive, because additional reviewed public material may be added over time.
@@ -60,6 +65,7 @@ docs/
   public technical architecture at an approved level of abstraction
   development milestones
   reproducibility guidance
+  reviewed public engineering logs
 
 publications/
   publication index
@@ -101,6 +107,8 @@ Do **not** publish the following merely because it exists in the private Zomnive
 - unreleased moderation, security or abuse-prevention internals;
 - private logs, database records or user information;
 - material whose copyright, licence or governance status is unclear.
+
+Reviewed engineering material may include substantial code **only when that code is already public or has been explicitly approved for public release**. Public engineering notes should not use private Zomniverse application code merely to demonstrate complexity.
 
 When uncertain, leave the material out and request review.
 
@@ -150,6 +158,7 @@ PUBLIC ZOMNIVERSE-PROJECT REPOSITORY
   publication-linked material
   approved figures/assets
   approved reproducibility material
+  reviewed public engineering logs
 ```
 
 The public repository should be understandable and useful on its own without reproducing private implementation details.
@@ -202,6 +211,7 @@ Subject to normal review, agents can work directly in this repository on:
 - public project summaries;
 - public technology descriptions;
 - public milestone pages;
+- reviewed public engineering logs based on already-public or explicitly approved material;
 - publication/citation indexes;
 - links to released papers and DOIs;
 - public screenshots and captions;
