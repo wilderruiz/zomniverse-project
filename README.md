@@ -10,7 +10,8 @@ This repository is the **public project window** for Zomniverse. The main source
 > **Source code:** Private  
 > **Public release model:** Progressive, publication-led disclosure
 
-**Technical overview:** [Languages, packages, scientific stack and AI models](docs/TECHNOLOGY.md)
+**Technical overview:** [Languages, packages, scientific stack and AI models](docs/TECHNOLOGY.md)  
+**Publishing boundary:** [What is published here and how agents should work with this repository](WHAT_IS_PUBLISHED_HERE.md)
 
 ---
 
