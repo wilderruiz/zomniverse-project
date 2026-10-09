@@ -7,15 +7,15 @@ Only public-safe engineering work belongs here. Private Zomniverse source, archi
 ## Engineering decision lifecycle
 
 ```mermaid
-flowchart LR
-    A[Observed problem] --> B[Constraint analysis]
-    B --> C[Public-safe engineering decision]
-    C --> D[Implementation / controlled change]
-    D --> E[Runtime or integration verification]
-    E --> F{Passed?}
+flowchart TD
+    A["Observed problem"] --> B["Constraint<br/>analysis"]
+    B --> C["Public-safe<br/>decision"]
+    C --> D["Controlled<br/>change"]
+    D --> E["Runtime / integration<br/>verification"]
+    E --> F{"Passed?"}
     F -->|No| B
-    F -->|Yes| G[Documented outcome]
-    G --> H[Reusable engineering principle]
+    F -->|Yes| G["Documented<br/>outcome"]
+    G --> H["Reusable<br/>principle"]
 ```
 
 This is the pattern used for public engineering notes: describe the problem, decision, verification, and outcome without exposing private product architecture.
@@ -54,13 +54,13 @@ This is the pattern used for public engineering notes: describe the problem, dec
 ## Verification ladder
 
 ```mermaid
-flowchart TB
-    S[Source review] --> B[Successful build]
-    B --> R[Runtime smoke]
-    R --> I[Integrated state verification]
-    I --> D[Documented outcome]
+flowchart TD
+    S["Source review"] --> B["Successful build"]
+    B --> R["Runtime smoke"]
+    R --> I["Integrated state<br/>verification"]
+    I --> D["Documented<br/>outcome"]
 
-    X[Build success alone] -. insufficient .-> R
+    X["Build success<br/>alone"] -. insufficient .-> R
 ```
 
 A successful build is necessary but not sufficient for desktop and asynchronous workflow changes. The public notes deliberately distinguish compilation success from runtime validation.
