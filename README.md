@@ -2,173 +2,113 @@
 
 **Private research software, public scientific progress.**
 
-Zomniverse is an actively developed research software environment for computational biology, transcriptomics, bioinformatics quality control, reproducible analysis, and AI-assisted scientific workflows.
+Zomniverse is an actively developed research-software environment for computational biology, transcriptomics, bioinformatics quality control, reproducible analysis, and AI-assisted scientific workflows.
 
-This repository is the **public project window** for Zomniverse. The main source repository remains private while methods, components, and research outputs are validated and prepared for publication.
+This repository is the project's public documentation and progress record. The application source remains private while methods and components are validated and prepared for publication.
 
-> **Status:** Active research and development  
-> **Source code:** Private  
+> **Status:** Active research and development
+>
+> **Source code:** Private
+>
 > **Public release model:** Progressive, publication-led disclosure
 
-**Technical overview:** [Languages, packages, scientific stack and AI models](docs/TECHNOLOGY.md)  
-**Publishing boundary:** [What is published here and how agents should work with this repository](WHAT_IS_PUBLISHED_HERE.md)
+## Start here
 
----
+| Document | Purpose |
+| --- | --- |
+| [Engineering overview](docs/ENGINEERING_OVERVIEW.md) | Capability map, module responsibilities, safeguards, maturity, and testing strategy |
+| [Technology overview](docs/TECHNOLOGY.md) | Languages, frameworks, scientific packages, and development tooling |
+| [Engineering log](docs/engineering/ENGINEERING_LOG.md) | Dated public engineering decisions and outcomes |
+| [Publication policy](WHAT_IS_PUBLISHED_HERE.md) | Mandatory boundary for what may and may not be published here |
 
-## What Zomniverse is for
+## What Zomniverse supports
 
-Zomniverse is being developed to support research workflows where biological data, computational analysis, validation, and research reporting need to remain traceable and reproducible.
+Zomniverse is designed for research workflows in which biological data, computation, validation, and reporting need to remain traceable and reviewable.
 
-Current areas of development include:
+Current capability areas include:
 
-- **RNA-seq and transcriptomics workflows**
-- **Bioinformatics data quality control**
-- **Differential and comparative analysis**
-- **Nanotoxicology and toxicogenomics research**
-- **Reproducible computational workflows**
-- **Research provenance and execution traceability**
-- **AI-assisted research tooling with validation controls**
-- **Structured scientific reporting and evidence review**
+- guided tabular-data intake and structural validation;
+- RNA-seq preparation through File Reader, Row Namer, and Expression Matrix Canonicalization;
+- controlled normalization and quality-control workflows;
+- toxicogenomics and nanoparticle-response research;
+- provenance-aware scientific artifacts and evidence review;
+- deterministic R/Bioconductor computation;
+- local-first AI assistance with provider-health and fallback handling;
+- responsive scientific workspaces and accessible lifecycle controls;
+- cross-language contract and regression testing.
 
-The project is intentionally broader than a single analysis pipeline. Zomniverse is being developed as a research environment in which independent scientific tools can be tested, validated, and connected into controlled workflows.
-
----
+The platform is broader than a single analysis pipeline. Modules can be developed and validated independently, then connected through controlled, reviewable transitions.
 
 ## Current feature areas
 
 | Area | Public status |
 | --- | --- |
-| Data intake and validation | In active development |
-| RNA-seq quality control | In active development |
-| Transcriptomic analysis workflows | In active development |
-| Nanotoxicology response analysis | Research stage |
-| Reproducibility and provenance controls | In active development |
-| AI-assisted research workflows | In active development |
-| Validation layers for AI-supported analysis | Research stage |
-| Scientific reporting and evidence synthesis | In active development |
+| Data intake, parsing, and validation | Active development |
+| RNA-seq preparation and canonicalization | Active development |
+| Normalization and quality control | Controlled research module |
+| Nanotoxicology and toxicogenomics | Research stage |
+| Reproducibility and provenance | Active development |
+| AI-assisted research and evidence synthesis | Active development |
+| Scientific reporting and visualisation | Active development |
+| Public reproducibility packages | Planned as validation and publication permit |
 
-Statuses above describe the **research/development state**, not regulatory or clinical validation.
+Statuses describe engineering maturity, not clinical, diagnostic, or regulatory validation.
 
----
+## Engineering principles
 
-## Research principles
+### Deterministic science, assistive AI
 
-Zomniverse development is guided by a few core principles:
+Quantitative results belong to testable scientific code. Language models can explain, organize, or synthesize evidence, but generated text is not treated as scientific authority.
 
-### Reproducibility
+### Review before commitment
 
-Important analytical steps should be traceable to their inputs, parameters, outputs, and execution history.
+Where a workflow transforms research data, Zomniverse favors explicit validation and reviewable candidates before acceptance into a downstream stage.
 
-### Validation before automation
+### Provenance and reproducibility
 
-AI and automation are used as processing and assistance layers rather than unquestioned scientific decision-makers. Validation, provenance, and human review remain central to the workflow.
+Important artifacts should retain stable identity, origin, relevant parameters, and version context. Scientific environments are controlled rather than assumed.
 
-### Modular scientific development
+### Modular development
 
-Research components can evolve independently and be evaluated separately before wider integration.
+Bounded modules can evolve, be tested, and be evaluated separately. Integration does not remove responsibility for validation at each boundary.
 
 ### Controlled disclosure
 
-Unpublished methods, implementation details, internal architecture, private research data, and experimental components remain private until they are ready to be disclosed.
-
----
+Private architecture, unpublished methods, operational details, research data, prompts, and experimental components remain private until release is scientifically and operationally appropriate.
 
 ## Publication model
 
-Zomniverse follows a **publication-led release model**.
-
-As associated research is published, this repository may progressively include:
+As associated work is validated and published, this repository may progressively add:
 
 - publication links and DOIs;
-- public method summaries;
+- public method and engineering summaries;
 - validated figures and example outputs;
-- selected documentation;
-- reproducibility material;
-- public datasets where licensing and research governance allow;
-- selected source components when appropriate.
+- reproducibility material and selected source components;
+- public datasets where licensing and governance allow;
+- release notes and public milestones.
 
-A component becoming scientifically described here does **not** automatically mean its implementation source code has been released.
+A capability being described publicly does not mean its source implementation has been released.
 
----
+## What is intentionally not public
 
-## Public development progress
+This is not a mirror of the private application repository. It excludes private source, internal architecture and topology, routes and service addresses, credentials and operational configuration, database internals, unpublished algorithms, private datasets, internal workspaces, prompts, orchestration logic, and collaborator-restricted material.
 
-### Active
+The complete and authoritative rules are in [WHAT_IS_PUBLISHED_HERE.md](WHAT_IS_PUBLISHED_HERE.md).
 
-- Bioinformatics quality-control workflows
-- Transcriptomics workflow development
-- Reproducibility and provenance tooling
-- AI-assisted research interaction
-- Validation-oriented research tooling
-- Scientific reporting workflows
-
-### Research-stage
-
-- Toxicogenomics and nanoparticle-response analysis
-- Cross-workflow research validation
-- Progressive publication and reproducibility packaging
-
-### Planned for this public repository
+## Public roadmap
 
 - [x] Public technology overview
-- [ ] Research overview
+- [x] Public engineering overview
+- [x] Engineering-log index
 - [ ] Public development milestones
 - [ ] Publication index
 - [ ] Selected screenshots and figures
 - [ ] Method summaries released alongside papers
 - [ ] Public reproducibility packages where appropriate
 
----
-
-## What is intentionally not public
-
-This repository does **not** expose the private Zomniverse application repository.
-
-In particular, it is not intended to publish:
-
-- internal application architecture;
-- private backend or deployment code;
-- unpublished algorithms or experimental methods;
-- credentials, infrastructure details, or private endpoints;
-- internal research workspaces;
-- unpublished datasets;
-- private AI prompts, orchestration logic, or research agents;
-- material restricted by collaborators, publishers, licences, or research governance.
-
-That boundary is deliberate: the public record can grow with the science without requiring premature disclosure of the private research platform.
-
----
-
-## Repository purpose
-
-For now, this repository should be treated as a **public research profile and progress record**, not as the Zomniverse source-code repository.
-
-Future directories may include:
-
-```text
-docs/          Public research and method documentation
-publications/  Papers, citations, DOIs, and associated notes
-assets/        Public screenshots, diagrams, and figures
-releases/      Public research packages when available
-```
-
----
-
 ## Research context
 
-Zomniverse is being developed in the context of doctoral research in computational biology, transcriptomics, and related bioinformatics applications.
-
-Scientific claims, methods, and results will be linked to their corresponding publications or public validation material as they become available.
-
----
-
-## Project status
-
-**Active development — 2026**
-
-The private platform is evolving continuously. This public repository will be updated selectively as research components reach an appropriate stage for public documentation or publication.
-
----
+Zomniverse is being developed in the context of doctoral research in computational biology, transcriptomics, and related bioinformatics applications. Scientific claims, methods, and results will be linked to corresponding publications or public validation material as they become available.
 
 ## Maintainer
 
@@ -178,4 +118,4 @@ GitHub: [@wilderruiz](https://github.com/wilderruiz)
 
 ---
 
-*Zomniverse is a research project under active development. Content in this repository should not be interpreted as clinical, diagnostic, or regulatory guidance.*
+*Zomniverse is research software under active development. Content in this repository is not clinical, diagnostic, or regulatory guidance.*
