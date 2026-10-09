@@ -21,27 +21,70 @@ This document presents a public, capability-level view of Zomniverse engineering
 
 Statuses describe engineering maturity, not clinical, regulatory, or diagnostic validation.
 
+## Engineering breadth
+
+Zomniverse is not a single-language analysis script or a monolithic web application. The public capability set spans scientific data engineering, deterministic computation, application services, local AI, visualisation, lifecycle controls, provenance, reproducibility, accessibility, and cross-language verification.
+
+```mermaid
+mindmap
+  root((Zomniverse))
+    Scientific workflows
+      RNA-seq preparation
+      Normalization and QC
+      Toxicogenomics
+      Evidence review
+    Engineering
+      Data validation
+      Provenance
+      Lifecycle state
+      Resource controls
+      Error recovery
+    Computation
+      R / Bioconductor
+      Python
+      Node.js
+      Browser modules
+    AI assistance
+      Local model runtime
+      Provider health
+      Fallback
+      Grounded synthesis
+    Product layer
+      Responsive workspaces
+      Scientific visualisation
+      Accessibility
+      Reporting
+    Quality
+      JavaScript tests
+      Python tests
+      R tests
+      Browser and manual smoke checks
+```
+
+This map describes engineering responsibilities, not private component topology.
+
 ## Design model
 
 Zomniverse is designed as a set of bounded research modules rather than a single opaque pipeline. A typical governed flow is:
 
-```text
-Researcher input
-      |
-      v
-Structural and semantic validation
-      |
-      v
-Reviewable candidate transformation
-      |
-      v
-Researcher approval or revision
-      |
-      v
-Versioned scientific artifact
-      |
-      v
-Downstream analysis, visualisation, or reporting
+```mermaid
+flowchart TD
+    A[Researcher input] --> B[Structural and semantic validation]
+    B --> C[Reviewable candidate transformation]
+    C --> D{Researcher decision}
+    D -->|Revise| B
+    D -->|Accept| E[Versioned scientific artifact]
+    E --> F[Downstream analysis]
+    E --> G[Visualisation]
+    E --> H[Reporting / evidence review]
+
+    P[Provenance and identity] --- B
+    P --- C
+    P --- E
+    Q[Deterministic scientific code] --- C
+    R[Assistive AI] -. explains / navigates .-> B
+    R -. contextualizes .-> C
+    R -. synthesizes .-> H
 ```
 
 The governing idea is simple: deterministic computation establishes the analytical record; AI can help interpret, explain, or navigate that record, but does not silently replace it.
@@ -66,8 +109,19 @@ The governing idea is simple: deterministic computation establishes the analytic
 
 The public preparation path is intentionally bounded:
 
-```text
-File Reader -> Row Namer -> Expression Matrix Canonicalization
+```mermaid
+flowchart LR
+    FR[File Reader\nparse + structural checks] --> RN[Row Namer\nbiological row identity]
+    RN --> EMC[EMC\ncanonicalization + sample metadata]
+    EMC --> ART[Reviewable expression-matrix artifact]
+    ART --> NQC[NQC\nnormalization + quality control]
+    NQC --> ANA[Controlled downstream analysis]
+
+    V[Validation] --- FR
+    V --- RN
+    V --- EMC
+    P[Provenance] --- EMC
+    P --- ART
 ```
 
 It is designed to turn ambiguous tabular input into a reviewable, consistent scientific artifact. Later normalization, quality-control, and analytical stages remain controlled while their methods and validation mature.
@@ -92,6 +146,20 @@ GB-Tox explores nanotoxicology and toxicogenomic analysis through a staged workf
 ## AI-assisted research
 
 Zomniverse uses local language-model tooling for conversational explanation, research synthesis, code-oriented help, and context-sensitive guidance. The interaction layer supports distinct task modes and structured contextual artifacts so that evidence, computed results, and generated explanation remain distinguishable.
+
+```mermaid
+flowchart LR
+    U[User intent] --> C[Bounded context]
+    C --> H{Provider readiness}
+    H -->|Preferred available| P[Preferred local provider]
+    H -->|Unavailable| F[Fallback provider]
+    P --> O[Reviewable AI output]
+    F --> O
+
+    E[Evidence / computed artifacts] --> O
+    D[Deterministic scientific result] --> O
+    O -. does not replace .-> D
+```
 
 The governing rules are:
 
@@ -167,11 +235,37 @@ The private project contains focused suites across JavaScript, Python, and R. Pu
 - responsive layouts, fullscreen/compact views, accessibility, and transient UI;
 - release/status presentation, documentation boundaries, and deployment exclusions.
 
+```mermaid
+flowchart LR
+    JS[JavaScript / Node tests] --> C[Shared contracts]
+    PY[Python / pytest] --> C
+    R[R verification] --> C
+    B[Browser + manual smoke] --> I[Integrated runtime behaviour]
+    C --> I
+    I --> G[Regression gate]
+```
+
 A test file's existence is not treated as proof of scientific validation. Claims should be tied to tests that were actually run and, for research methods, to suitable domain validation and publication evidence.
 
 ## Performance and operational resilience
 
 Performance work focuses on bounded parsing, controlled upload and context sizes, lazy presentation of long collections, provider health checks, and separating heavyweight computation from browser interaction. Development can use local GPU acceleration for language-model inference, while the design retains non-GPU paths and explicit failure states. Connectivity and deployment checks are treated as operational concerns rather than silently changing scientific results.
+
+## Why the engineering is multidisciplinary
+
+The complexity of Zomniverse comes from making multiple technical disciplines coexist under one research-governance model:
+
+| Discipline | Engineering requirement |
+| --- | --- |
+| Bioinformatics | Deterministic, testable scientific computation and domain-specific validation |
+| Data engineering | Parsing, metadata reconciliation, identity, provenance, and artifact lifecycle |
+| AI engineering | Local model execution, readiness checks, fallback, context governance, and evidence/result separation |
+| Product engineering | High-information scientific UX, responsive workspaces, accessibility, and state recovery |
+| Backend engineering | Controlled orchestration, persistence, lifecycle operations, and integrations |
+| Quality engineering | Cross-language contracts, regression tests, runtime smoke tests, and failure-state validation |
+| Reproducibility | Versioned environments, checksums, restore points, and reviewed release boundaries |
+
+The value of this combination is not merely the number of technologies involved; it is the effort required to preserve scientific authority, traceability, and understandable user control while those technologies interact.
 
 ## Versioning and release discipline
 
