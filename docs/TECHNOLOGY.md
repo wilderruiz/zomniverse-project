@@ -7,15 +7,15 @@ This is a public technical summary of the technologies used in Zomniverse. It de
 ## Technology systems map
 
 ```mermaid
-flowchart TB
-    UI[Scientific interaction layer\nJavaScript · ES modules · CSS · PHP-rendered pages]
-    APP[Application services\nNode.js · Express · MariaDB / SQL]
-    SCI[Deterministic scientific computing\nR · Bioconductor · Plumber]
-    PY[Validation and research utilities\nPython · FastAPI]
-    AI[Assistive local AI\nMistral-7B · llama.cpp-compatible runtime]
-    VIS[Visualisation and reporting\nPlotly.js · Mermaid · Markdown]
-    TEST[Cross-language verification\nnode:test · pytest · R tests · browser checks]
-    REPRO[Reproducibility controls\nGit · renv · Conda · Bioconductor environments]
+flowchart TD
+    UI["Scientific interface<br/>JavaScript · ES modules"]
+    APP["Application services<br/>Node.js · Express"]
+    SCI["Deterministic science<br/>R · Bioconductor"]
+    PY["Validation + utilities<br/>Python · FastAPI"]
+    AI["Assistive local AI<br/>Mistral-7B"]
+    VIS["Visualisation + reports<br/>Plotly.js · Mermaid"]
+    TEST["Cross-language<br/>verification"]
+    REPRO["Reproducibility<br/>Git · renv · Conda"]
 
     UI --> APP
     APP --> SCI
@@ -23,7 +23,7 @@ flowchart TB
     APP --> AI
     SCI --> VIS
     PY --> VIS
-    AI -. assistive interpretation .-> VIS
+    AI -. interpretation .-> VIS
 
     TEST --- UI
     TEST --- APP
@@ -117,14 +117,16 @@ Zomniverse supports a local **Mistral-7B** model through a llama.cpp-compatible 
 
 ```mermaid
 stateDiagram-v2
-    [*] --> ReadinessCheck
-    ReadinessCheck --> PreferredProvider: healthy
-    ReadinessCheck --> FallbackProvider: unavailable
-    PreferredProvider --> ReviewableOutput
-    FallbackProvider --> ReviewableOutput
-    PreferredProvider --> FallbackProvider: bounded provider failure
-    ReviewableOutput --> [*]
+    [*] --> Ready
+    Ready --> Preferred: healthy
+    Ready --> Fallback: unavailable
+    Preferred --> Output
+    Preferred --> Fallback: bounded failure
+    Fallback --> Output
+    Output --> [*]
 ```
+
+**State key:** `Ready` = readiness check, `Preferred` = preferred provider, `Fallback` = fallback provider, `Output` = reviewable AI output.
 
 This state model is deliberately abstract. It documents resilience semantics without disclosing private addresses, ports, commands, topology, or orchestration internals.
 
