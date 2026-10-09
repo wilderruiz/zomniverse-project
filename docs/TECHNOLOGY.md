@@ -1,8 +1,42 @@
 # Zomniverse technology overview
 
-This is a public, employer-facing summary of the technologies used in Zomniverse. It describes responsibilities and capabilities without exposing private architecture, service topology, endpoints, infrastructure, prompts, unpublished methods, or research data.
+This is a public technical summary of the technologies used in Zomniverse. It describes responsibilities and capabilities without exposing private architecture, service topology, endpoints, infrastructure, prompts, unpublished methods, or research data.
 
 **Reviewed:** 9 October 2026
+
+## Technology systems map
+
+```mermaid
+flowchart TB
+    UI[Scientific interaction layer\nJavaScript · ES modules · CSS · PHP-rendered pages]
+    APP[Application services\nNode.js · Express · MariaDB / SQL]
+    SCI[Deterministic scientific computing\nR · Bioconductor · Plumber]
+    PY[Validation and research utilities\nPython · FastAPI]
+    AI[Assistive local AI\nMistral-7B · llama.cpp-compatible runtime]
+    VIS[Visualisation and reporting\nPlotly.js · Mermaid · Markdown]
+    TEST[Cross-language verification\nnode:test · pytest · R tests · browser checks]
+    REPRO[Reproducibility controls\nGit · renv · Conda · Bioconductor environments]
+
+    UI --> APP
+    APP --> SCI
+    APP --> PY
+    APP --> AI
+    SCI --> VIS
+    PY --> VIS
+    AI -. assistive interpretation .-> VIS
+
+    TEST --- UI
+    TEST --- APP
+    TEST --- SCI
+    TEST --- PY
+    TEST --- AI
+
+    REPRO --- SCI
+    REPRO --- PY
+    REPRO --- APP
+```
+
+The diagram is capability-level: it communicates the breadth of the engineering stack without revealing private deployment topology or internal service wiring.
 
 ## Technology summary
 
@@ -81,6 +115,19 @@ Python complements rather than replaces the R and JavaScript portions of the pro
 
 Zomniverse supports a local **Mistral-7B** model through a llama.cpp-compatible runtime. Its roles include natural-language assistance, evidence-oriented synthesis, explanation, and code-oriented support.
 
+```mermaid
+stateDiagram-v2
+    [*] --> ReadinessCheck
+    ReadinessCheck --> PreferredProvider: healthy
+    ReadinessCheck --> FallbackProvider: unavailable
+    PreferredProvider --> ReviewableOutput
+    FallbackProvider --> ReviewableOutput
+    PreferredProvider --> FallbackProvider: bounded provider failure
+    ReviewableOutput --> [*]
+```
+
+This state model is deliberately abstract. It documents resilience semantics without disclosing private addresses, ports, commands, topology, or orchestration internals.
+
 Engineering around AI includes provider readiness checks, task-specific response governance, structured result presentation, bounded context and output handling, and failure paths that preserve retrieved evidence or computed results. Development can use local GPU acceleration when available; safe non-GPU or environment-appropriate fallbacks remain part of resilience planning.
 
 Generated text is assistive output. It is not a substitute for deterministic analysis, primary literature, validation logic, or researcher judgement. Private prompts, routing policy, agent implementation, and orchestration remain unpublished.
@@ -118,6 +165,19 @@ The wider development environment includes:
 - Linux/WSL-oriented development and test workflows.
 
 Bounded agent-development workspaces keep subsystem context, evidence, tests, and current-state notes close to the relevant code without copying production source or expanding every task to the whole repository.
+
+## Engineering profile by concern
+
+| Concern | Representative stack | Engineering emphasis |
+| --- | --- | --- |
+| Scientific correctness | R, Bioconductor, explicit workflow stages | Deterministic authority and reviewable transitions |
+| Application state | Node.js, MariaDB/SQL | Ownership, lifecycle, artifact identity, controlled persistence |
+| Interaction engineering | ES modules, CSS, Plotly.js | Responsive scientific UX, accessibility, high-information interfaces |
+| AI resilience | Local LLM runtime, provider readiness, fallback | Availability without allowing generated text to become scientific authority |
+| Reproducibility | Git, renv, Conda | Repeatable environments and traceable change history |
+| Verification | JavaScript, Python, R and browser checks | Cross-language contracts and regression control |
+| Resource management | Bounded upload, parsing, model context and rendering | Predictable behavior under large or expensive workloads |
+| Public disclosure | Review-first documentation boundary | Technical transparency without leaking private architecture |
 
 ## Disclosure boundary
 
