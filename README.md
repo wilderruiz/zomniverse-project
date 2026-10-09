@@ -15,23 +15,23 @@ The project combines deterministic scientific computation with reviewable data t
 ## Engineering surface
 
 ```mermaid
-flowchart LR
-    A[Research data] --> B[Validated intake]
-    B --> C[Canonicalization and metadata control]
-    C --> D[Deterministic scientific computation]
-    D --> E[Quality control and interpretation]
-    E --> F[Reviewable scientific artifacts]
+flowchart TD
+    A["Research data"] --> B["Validated intake"]
+    B --> C["Canonicalization<br/>+ metadata"]
+    C --> D["Deterministic<br/>compute"]
+    D --> E["QC +<br/>interpretation"]
+    E --> F["Reviewable<br/>artifacts"]
 
-    G[Assistive AI] -. explains / navigates .-> B
-    G -. explains / synthesizes .-> D
+    G["Assistive AI"] -. explains .-> B
+    G -. synthesizes .-> D
     G -. contextualizes .-> E
 
-    H[Provenance and lifecycle controls] --- B
+    H["Provenance<br/>+ lifecycle"] --- B
     H --- C
     H --- D
     H --- F
 
-    I[Cross-language verification] --- B
+    I["Cross-language<br/>verification"] --- B
     I --- C
     I --- D
     I --- E
