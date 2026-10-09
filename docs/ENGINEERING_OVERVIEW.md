@@ -69,20 +69,20 @@ Zomniverse is designed as a set of bounded research modules rather than a single
 
 ```mermaid
 flowchart TD
-    A[Researcher input] --> B[Structural and semantic validation]
-    B --> C[Reviewable candidate transformation]
-    C --> D{Researcher decision}
+    A["Researcher input"] --> B["Structural + semantic<br/>validation"]
+    B --> C["Reviewable<br/>candidate"]
+    C --> D{"Researcher<br/>decision"}
     D -->|Revise| B
-    D -->|Accept| E[Versioned scientific artifact]
-    E --> F[Downstream analysis]
-    E --> G[Visualisation]
-    E --> H[Reporting / evidence review]
+    D -->|Accept| E["Versioned<br/>artifact"]
+    E --> F["Downstream<br/>analysis"]
+    E --> G["Visualisation"]
+    E --> H["Reporting /<br/>evidence"]
 
-    P[Provenance and identity] --- B
+    P["Provenance<br/>+ identity"] --- B
     P --- C
     P --- E
-    Q[Deterministic scientific code] --- C
-    R[Assistive AI] -. explains / navigates .-> B
+    Q["Deterministic<br/>science"] --- C
+    R["Assistive AI"] -. explains .-> B
     R -. contextualizes .-> C
     R -. synthesizes .-> H
 ```
@@ -110,17 +110,17 @@ The governing idea is simple: deterministic computation establishes the analytic
 The public preparation path is intentionally bounded:
 
 ```mermaid
-flowchart LR
-    FR[File Reader\nparse + structural checks] --> RN[Row Namer\nbiological row identity]
-    RN --> EMC[EMC\ncanonicalization + sample metadata]
-    EMC --> ART[Reviewable expression-matrix artifact]
-    ART --> NQC[NQC\nnormalization + quality control]
-    NQC --> ANA[Controlled downstream analysis]
+flowchart TD
+    FR["File Reader<br/>parse + structure"] --> RN["Row Namer<br/>row identity"]
+    RN --> EMC["EMC<br/>canonicalization"]
+    EMC --> ART["Reviewable<br/>expression set"]
+    ART --> NQC["NQC<br/>normalization + QC"]
+    NQC --> ANA["Controlled<br/>downstream stage"]
 
-    V[Validation] --- FR
+    V["Validation"] --- FR
     V --- RN
     V --- EMC
-    P[Provenance] --- EMC
+    P["Provenance"] --- EMC
     P --- ART
 ```
 
@@ -148,16 +148,16 @@ GB-Tox explores nanotoxicology and toxicogenomic analysis through a staged workf
 Zomniverse uses local language-model tooling for conversational explanation, research synthesis, code-oriented help, and context-sensitive guidance. The interaction layer supports distinct task modes and structured contextual artifacts so that evidence, computed results, and generated explanation remain distinguishable.
 
 ```mermaid
-flowchart LR
-    U[User intent] --> C[Bounded context]
-    C --> H{Provider readiness}
-    H -->|Preferred available| P[Preferred local provider]
-    H -->|Unavailable| F[Fallback provider]
-    P --> O[Reviewable AI output]
+flowchart TD
+    U["User intent"] --> C["Bounded context"]
+    C --> H{"Provider<br/>ready?"}
+    H -->|Available| P["Preferred local<br/>provider"]
+    H -->|Unavailable| F["Fallback<br/>provider"]
+    P --> O["Reviewable AI<br/>output"]
     F --> O
 
-    E[Evidence / computed artifacts] --> O
-    D[Deterministic scientific result] --> O
+    E["Evidence /<br/>computed result"] --> O
+    D["Deterministic<br/>authority"] --> O
     O -. does not replace .-> D
 ```
 
@@ -236,13 +236,13 @@ The private project contains focused suites across JavaScript, Python, and R. Pu
 - release/status presentation, documentation boundaries, and deployment exclusions.
 
 ```mermaid
-flowchart LR
-    JS[JavaScript / Node tests] --> C[Shared contracts]
-    PY[Python / pytest] --> C
-    R[R verification] --> C
-    B[Browser + manual smoke] --> I[Integrated runtime behaviour]
-    C --> I
-    I --> G[Regression gate]
+flowchart TD
+    JS["JavaScript / Node"] --> C["Shared contracts"]
+    PY["Python / pytest"] --> C
+    R["R verification"] --> C
+    C --> I["Integrated runtime"]
+    B["Browser +<br/>manual smoke"] --> I
+    I --> G["Regression gate"]
 ```
 
 A test file's existence is not treated as proof of scientific validation. Claims should be tied to tests that were actually run and, for research methods, to suitable domain validation and publication evidence.
