@@ -2,9 +2,9 @@
 
 **Private research software, public scientific progress.**
 
-Zomniverse is an actively developed research-software environment for computational biology, transcriptomics, bioinformatics quality control, reproducible analysis, and AI-assisted scientific workflows.
+Zomniverse is an actively developed research-software platform spanning computational biology, transcriptomics, bioinformatics quality control, toxicogenomics, reproducible analysis, provenance-aware data workflows, and AI-assisted scientific interaction.
 
-This repository is the project's public documentation and progress record. The application source remains private while methods and components are validated and prepared for publication.
+The project combines deterministic scientific computation with reviewable data transformations, cross-language validation, local AI acceleration, resilient provider handling, and research-oriented interface engineering. This repository is the public documentation and progress record; the application source remains private while methods and components are validated and prepared for publication.
 
 > **Status:** Active research and development
 >
@@ -12,18 +12,45 @@ This repository is the project's public documentation and progress record. The a
 >
 > **Public release model:** Progressive, publication-led disclosure
 
+## Engineering surface
+
+```mermaid
+flowchart LR
+    A[Research data] --> B[Validated intake]
+    B --> C[Canonicalization and metadata control]
+    C --> D[Deterministic scientific computation]
+    D --> E[Quality control and interpretation]
+    E --> F[Reviewable scientific artifacts]
+
+    G[Assistive AI] -. explains / navigates .-> B
+    G -. explains / synthesizes .-> D
+    G -. contextualizes .-> E
+
+    H[Provenance and lifecycle controls] --- B
+    H --- C
+    H --- D
+    H --- F
+
+    I[Cross-language verification] --- B
+    I --- C
+    I --- D
+    I --- E
+```
+
+This diagram is intentionally capability-level. It shows engineering responsibilities without exposing private service topology, routes, infrastructure, or implementation wiring.
+
 ## Start here
 
 | Document | Purpose |
 | --- | --- |
-| [Engineering overview](docs/ENGINEERING_OVERVIEW.md) | Capability map, module responsibilities, safeguards, maturity, and testing strategy |
-| [Technology overview](docs/TECHNOLOGY.md) | Languages, frameworks, scientific packages, and development tooling |
-| [Engineering log](docs/engineering/ENGINEERING_LOG.md) | Dated public engineering decisions and outcomes |
+| [Engineering overview](docs/ENGINEERING_OVERVIEW.md) | Capability map, module responsibilities, safeguards, maturity, testing, and resilience |
+| [Technology overview](docs/TECHNOLOGY.md) | Languages, frameworks, scientific packages, AI tooling, and engineering responsibilities |
+| [Engineering log](docs/engineering/ENGINEERING_LOG.md) | Dated public engineering decisions, problems, validation, and outcomes |
 | [Publication policy](WHAT_IS_PUBLISHED_HERE.md) | Mandatory boundary for what may and may not be published here |
 
 ## What Zomniverse supports
 
-Zomniverse is designed for research workflows in which biological data, computation, validation, and reporting need to remain traceable and reviewable.
+Zomniverse is designed for research workflows in which biological data, computation, validation, interpretation, and reporting need to remain traceable and reviewable.
 
 Current capability areas include:
 
@@ -35,9 +62,10 @@ Current capability areas include:
 - deterministic R/Bioconductor computation;
 - local-first AI assistance with provider-health and fallback handling;
 - responsive scientific workspaces and accessible lifecycle controls;
-- cross-language contract and regression testing.
+- cross-language contract, regression, lifecycle, and workflow testing;
+- bounded large-file, model-context, and asynchronous-state handling.
 
-The platform is broader than a single analysis pipeline. Modules can be developed and validated independently, then connected through controlled, reviewable transitions.
+The platform is broader than a single analysis pipeline. Modules can be developed, validated, and evolved independently, then connected through controlled transitions and explicit artifact boundaries.
 
 ## Current feature areas
 
@@ -50,6 +78,7 @@ The platform is broader than a single analysis pipeline. Modules can be develope
 | Reproducibility and provenance | Active development |
 | AI-assisted research and evidence synthesis | Active development |
 | Scientific reporting and visualisation | Active development |
+| Cross-language verification | Active development |
 | Public reproducibility packages | Planned as validation and publication permit |
 
 Statuses describe engineering maturity, not clinical, diagnostic, or regulatory validation.
@@ -58,7 +87,7 @@ Statuses describe engineering maturity, not clinical, diagnostic, or regulatory 
 
 ### Deterministic science, assistive AI
 
-Quantitative results belong to testable scientific code. Language models can explain, organize, or synthesize evidence, but generated text is not treated as scientific authority.
+Quantitative results belong to testable scientific code. Language models can explain, organize, navigate, or synthesize evidence, but generated text is not treated as scientific authority.
 
 ### Review before commitment
 
@@ -67,6 +96,10 @@ Where a workflow transforms research data, Zomniverse favors explicit validation
 ### Provenance and reproducibility
 
 Important artifacts should retain stable identity, origin, relevant parameters, and version context. Scientific environments are controlled rather than assumed.
+
+### Bounded failure
+
+Provider, connectivity, parsing, or interface failures should preserve the last valid state wherever possible rather than silently changing scientific output.
 
 ### Modular development
 
@@ -100,6 +133,7 @@ The complete and authoritative rules are in [WHAT_IS_PUBLISHED_HERE.md](WHAT_IS_
 - [x] Public technology overview
 - [x] Public engineering overview
 - [x] Engineering-log index
+- [x] Capability-level engineering diagrams
 - [ ] Public development milestones
 - [ ] Publication index
 - [ ] Selected screenshots and figures
